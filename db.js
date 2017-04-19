@@ -23,7 +23,7 @@ var URLSlugs = require('mongoose-url-slugs');
 
  MuseumObject.plugin(URLSlugs('title'));
  mongoose.model('MuseumObject', MuseumObject);
- 
+
 // is the environment variable, NODE_ENV, set to PRODUCTION? 
 if (process.env.NODE_ENV == 'PRODUCTION') {
   console.log("in production");
@@ -40,8 +40,8 @@ if (process.env.NODE_ENV == 'PRODUCTION') {
 } 
 else {
  // if we're not in PRODUCTION mode, then use
- //dbconf = 'mongodb://pauline:mongo123@ds115918.mlab.com:15918/heroku_kcl276gt';
- var dbconf='mongodb://localhost/AMNH1';
+ dbconf = 'mongodb://pauline:mongo123@ds115918.mlab.com:15918/heroku_kcl276gt';
+// dbconf='mongodb://localhost/AMNH1';
 }
 
 mongoose.connect(dbconf);
