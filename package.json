@@ -1,0 +1,27 @@
+{
+  "name": "amnhdigital-research-archive-prototype",
+  "version": "1.0.0",
+  "description": "AMNH Digital Research Archive Prototype",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulineOC/DigitalResearchArchivePrototype.git"
+  },
+  "author": "Pauline",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PaulineOC/DigitalResearchArchivePrototype/issues"
+  },
+  "homepage": "https://github.com/PaulineOC/DigitalResearchArchivePrototype#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "hbs": "^4.0.1",
+    "mongoose": "^4.9.5",
+    "mongoose-url-slugs": "^0.2.1",
+    "multer": "^1.3.0"
+  }
+}

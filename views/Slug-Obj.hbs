@@ -1,0 +1,91 @@
+<div class="container-fluid">
+	<h1>Brooklyn Museum's Luce Research Center</h1>
+	<div class="row">
+		{{!-- Image --}}
+
+		<div class="col-lg-4">
+			<img class="img-responsive" src="data:image/jpeg;base64,{{{object.pic}}}">
+		</div>
+
+		{{!-- Information --}}
+		<div class="col-lg-4">
+			<h2>{{{object.title}}}</h2>
+			<div>
+				Accession #: {{{object.accessionNum}}}
+			</div>
+
+			{{#if object.maker }}
+				<div>
+					Maker #: {{{object.maker}}} 
+				</div>
+			{{/if}}
+
+			{{#if object.manufacturer }}
+				<div>
+					Manufacturer #: {{{object.manufacturer}}} 
+				</div>
+			{{/if}}
+
+			{{#if object.date}}
+				<div>
+					Date: {{{object.date}}} 
+				</div>
+			{{/if}}
+
+			{{#if object.medium }}
+				<div>
+					Medium: {{{object.medium}}} 
+				</div>
+			{{/if}}
+
+			{{#if object.dimensions }}
+				<div>
+					Dimensions: {{{object.dimensions}}} 
+				</div>
+			{{/if}}
+
+
+			{{#if object.marks }}
+				<div>
+					Marks: {{{object.marks}}} 
+				</div>
+			{{/if}}
+
+			{{#if object.description }}
+				<div>
+					Description: {{{object.description}}} 
+				</div>
+			{{/if}}
+
+		</div>
+		{{!-- Further Information --}}
+		<div class="col-lg-4">
+			<h3>Further Information</h3>
+
+			{{!-- {{#each object.furtherArtLinks}}
+				<a href='{{this}}'>hi{{this}}</a><BR>
+			{{/each }} --}}
+			
+			
+			{{#if object.furtherArticles}}
+			<h4>Articles</h4>
+				{{#each object.furtherArticles}}
+					<div>{{this.article}}<a href='{{this.link}}'>{{this.link}}</a>
+					</div>
+				{{/each }}
+			{{/if}}
+
+				{{#if object.furtherLinks}}
+				<h4>Related Videos</h4><BR>
+				{{#each object.furtherLinks}}
+					<div class="embed-responsive embed-responsive-16by9">
+				  		<iframe class="embed-responsive-item" src="{{this}}" frameborder="0" allowfullscreen></iframe>
+					</div><BR>
+
+				{{/each }}
+			{{/if}}
+
+			<BR>
+		</div>
+	</div>
+</div>
