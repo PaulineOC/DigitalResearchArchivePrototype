@@ -27,7 +27,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 app.get('/', function(req, res) {
-	res.render('index');
+	res.render('index' ,{layout: 'layout2.hbs'});
 });
 
 app.post('/', function(req,res){
