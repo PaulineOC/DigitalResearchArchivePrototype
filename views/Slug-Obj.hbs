@@ -1,61 +1,103 @@
 <div class="container-fluid">
-	<h1>Brooklyn Museum's Luce Research Center</h1>
 	<div class="row">
-		{{!-- Image --}}
-
-		<div class="col-lg-4">
-			<img class="img-responsive" src="data:image/jpeg;base64,{{{object.pic}}}">
+		<div class="col-lg-6">
+			{{!-- Image --}}
+			<img class="img-responsive" src="data:image/jpeg;base64,{{{object.pic}}}" style=" margin-left:auto;margin-right:auto">
 		</div>
+		<div class="col-lg-6">
+			<table class= "table .table-responsive table-bordered">
+				<tbody>
+					<tr>
+						<th scope="row">Title</th>
+						<td>{{{object.title}}}</td>
+					</tr>
+					<tr>
+						<th scope="row">Medium</th>
+						<td>{{{object.medium}}}</td>
+					</tr>
+					<tr>
+						<th scope="row">Photographer</th>
+						<td>{{{object.photographer}}}</td>
+					</tr>
+					<tr>
+						<th scope="row">Format</th>
+						<td>{{{object.format}}}</td>
+					</tr>
+					<tr>
+						<th scope="row">Date</th>
+						<td>{{{object.date}}}</td>
+					</tr>
+
+					<tr>
+						<th scope="row">Identifier</th>
+						<td>{{{object.identifier}}}</td>
+					</tr>
+
+					<tr>
+						<th scope="row">Original Identifier</th>
+						<td>{{{object.originalIdentifier}}}</td>
+					</tr>
+
+					<tr>
+						<th scope="row">Department</th>
+						<td>{{{object.department}}}</td>
+					</tr>
+
+					<tr>
+						<th scope="row">Collection</th>
+						<td>{{{object.collectionType}}}</td>
+					</tr>
+
+					<tr>
+						<th scope="row">Repository</th>
+						<td>{{{object.repository}}}</td>
+					</tr>
+
+				</tbody>
+			</table>
+
+			<table class="table .table-responsive table-bordered">
+			{{#if object.onDisplay}}
+			hihi
+			{{/if}}
+
+
+
+			</table>
+
+
+			{{!-- identifier: {type: String, default: ''},
+  title: {type: String, default: ''},
+  format: {type: String, default: ''},
+  publisher: {type: String, default: ''},
+  photographer: {type: String, default: ''},
+  repository: {type: String, default: ''},
+  //specific to AMNH
+  department: {type: String, default: ''},
+  medium: {type: String, default: ''},
+  date: {type: String, default: ''},
+  coverage: [String],
+  subject: {type: String, default: ''},
+  collectiontype: {type: String, default: ''},
+  pic: {type: String, default: ''}, --}}
+
+
+
+
+
+
+			
+
+		</div>
+
+
+	<div class="row">
+		
 
 		{{!-- Information --}}
 		<div class="col-lg-4">
-			<h2>{{{object.title}}}</h2>
-			<div>
-				Accession #: {{{object.accessionNum}}}
-			</div>
-
-			{{#if object.maker }}
-				<div>
-					Maker #: {{{object.maker}}} 
-				</div>
-			{{/if}}
-
-			{{#if object.manufacturer }}
-				<div>
-					Manufacturer #: {{{object.manufacturer}}} 
-				</div>
-			{{/if}}
-
-			{{#if object.date}}
-				<div>
-					Date: {{{object.date}}} 
-				</div>
-			{{/if}}
-
-			{{#if object.medium }}
-				<div>
-					Medium: {{{object.medium}}} 
-				</div>
-			{{/if}}
-
-			{{#if object.dimensions }}
-				<div>
-					Dimensions: {{{object.dimensions}}} 
-				</div>
-			{{/if}}
-
-
-			{{#if object.marks }}
-				<div>
-					Marks: {{{object.marks}}} 
-				</div>
-			{{/if}}
-
-			{{#if object.description }}
-				<div>
-					Description: {{{object.description}}} 
-				</div>
-			{{/if}}
+			
+			
 
 		</div>
 		{{!-- Further Information --}}
@@ -65,8 +107,7 @@
 			{{!-- {{#each object.furtherArtLinks}}
 				<a href='{{this}}'>hi{{this}}</a><BR>
 			{{/each }} --}}
-			
-			
+
 			{{#if object.furtherArticles}}
 			<h4>Articles</h4>
 				{{#each object.furtherArticles}}
@@ -88,4 +129,15 @@
 			<BR>
 		</div>
 	</div>
+
+	<div class="row">
+		
+
+	</div>
+
+
+	</div>
+
+	
+
 </div>

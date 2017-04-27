@@ -1,13 +1,23 @@
 
 <div class="container-fluid">
-	<h1>AMNH HOME<h1>
 	<div class="row">
 		<div class="col-md-6">
-			jsdkfjsdkjf
-		</div>
-		
-		<div class="col-md-6">
+			<div class="row">
+			
+				<div class="col-md-12">
+				<h1>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h1>
+				</div>
 
+				<div class="col-md-12">
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at laoreet velit, ac tincidunt diam. Integer id tristique elit, et porttitor lorem. Duis ac viverra enim. Vivamus tincidunt consequat diam, ac laoreet nunc. Sed venenatis congue orci vitae tempor. Integer lobortis facilisis orci sed pretium. Suspendisse condimentum a lectus quis varius. <BR>  Nulla cursus mollis enim, sed interdum lacus blandit fermentum. Morbi tincidunt sem ligula, ut iaculis ante rhoncus sit amet. Praesent luctus mi vel nunc cursus, nec fringilla nibh dignissim. Vestibulum interdum est quam, eu pretium arcu aliquam sit amet. Sed condimentum nulla sed lobortis eleifend. Nulla suscipit auctor congue. Etiam pretium lobortis ipsum in tincidunt. Cras maximus nibh quis metus feugiat tempor.
+				</p>
+
+				</div>
+				
+			</div>
+		</div>
+		<div class="col-md-6">
 			<div id="rg-gallery" class="rg-gallery">
 					<div class="rg-thumbs">
 						<!-- Elastislide Carousel Thumbnail Viewer -->
@@ -18,11 +28,9 @@
 							</div>
 							<div class="es-carousel">
 								<ul>
-									<li><a href="#"><img src="/images/thumbs/1.jpg" data-large="images/1.jpg" alt="image01" data-description="From off a hill whose concave womb reworded" /></a></li>
-									<li><a href="#"><img src="/images/thumbs/2.jpg" data-large="images/2.jpg" alt="image02" data-description="A plaintful story from a sistering vale" /></a></li>
-									<li><a href="#"><img src="/images/thumbs/3.jpg" data-large="images/3.jpg" alt="image03" data-description="A plaintful story from a sistering vale" /></a></li>
-									<li><a href="#"><img src="/images/thumbs/4.jpg" data-large="images/4.jpg" alt="image04" data-description="My spirits to attend this double voice accorded" /></a></li>
-									<li><a href="#"><img src="/images/thumbs/5.jpg" data-large="images/5.jpg" alt="image05" data-description="And down I laid to list the sad-tuned tale" /></a></li>
+									{{#each results}}
+									<li><a href="{{{this.slug}}}"><img src="data:image/jpeg;base64,{{{this.pic}}}" data-large="data:image/jpeg;base64,{{{this.pic}}}"/></a></li>
+									{{/each}}
 								</ul>
 							</div>
 						</div>
@@ -30,22 +38,66 @@
 					</div><!-- rg-thumbs -->
 				</div><!-- rg-gallery -->
 			</div><!-- content -->
-		</div><!-- container -->
-
-
+		</div><!-- container for image gallery -->
 
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.tmpl.min.js"></script>
 		<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
 		<script type="text/javascript" src="/js/jquery.elastislide.js"></script>
 		<script type="text/javascript" src="/js/gallery.js"></script>
-
-
-
-
-
-		</div>
+	
+	<div class="row">
+			<!-- Accordions -->
+			<div class="tabContent" id="tabContent1" style="padding:20px">
+			    <div class="panel-group col-md-12" id="accordion">
+			        <div class="panel panel-default">
+			            <div class="panel-heading">
+			                <h4 class="panel-title">
+			                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+									Recent Additions
+			                    </a>
+			                </h4>
+			            </div>
+			            <div id="collapseOne" class="panel-collapse collapse in">
+			                <div class="panel-body">
+			                    <p>First Section</p>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="panel panel-default">
+			            <div class="panel-heading">
+			                <h4 class="panel-title">
+			                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+			                    	Most Viewed
+			                    </a>
+			                </h4>
+			            </div>
+			            <div id="collapseTwo" class="panel-collapse collapse">
+			                <div class="panel-body">
+			                    <p>Second Section</a></p>
+			                </div>
+			            </div>
+			        </div>
+			        <div class="panel panel-default">
+			            <div class="panel-heading">
+			                <h4 class="panel-title">
+			                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+			                    	Random
+			                    </a>
+			                </h4>
+			            </div>
+			            <div id="collapseThree" class="panel-collapse collapse">
+			                <div class="panel-body">
+			                    <p>Third Section</p>
+			                </div>
+			            </div>
+			        </div>
+			    </div>
+			</div>
+			
+	
 	</div>
+
 </div>
 
 	{{!-- <div class="col-md-2"> --}}
@@ -55,6 +107,16 @@
 <script>
 	
 
+$('.nav a').click(function (e) {
+    $(this).tab('show');
+  
+  var tabContent = '#tabContent' + this.id; 
+  
+  $('#tabContent1').hide();
+  $('#tabContent2').hide();
+  $('#tabContent3').hide();
+  $(tabContent).show();
+})
 
 
 

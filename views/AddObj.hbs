@@ -1,63 +1,61 @@
 
+<div class="container-fluid">
+
 <h1>Add an Object to the Collection<h1>
 
 <h3>
 
  <form method="POST" action="AddObj" id="AddObj" enctype='multipart/form-data'>
- 		<div> Location**
-			<BR>
-			<textarea name="location" form="AddObj" cols='50' style="font-size:16px;" required></textarea>
-		</div>
-	 	*Accession #:  <input type="text" name = "accession" value ="" required>
-	 	<BR>
-	 	Maker/Designer/Artist: <input type="text" name = "maker" value ="">
-	 	<BR>
-	 	Manufacturer: <input type="text" name = "manufacturer" value ="" >
-	 	<BR>
-	 	*Title: <input type="text" name = "title" value ="" required >
-	 	<BR>
- 		{{!-- Dates can be in string format: ca. 1930 vs. 1932-1934--}}
-	 	*Date : <input type="text" name="date" value="" required>
-	 	<BR>
-	 	*Medium: <input type="text" name="medium" value="" required>
-	 	<BR>
-	 	<div>
-			Dimensions:
-			<blockquote>
-				<input type="text" name="length" form="AddObj"> X <input type="text" name="width" form="AddObj"> X <input type="text" name="height" form="AddObj">
-			</blockquote>
-		</div> 
-	 	Marks: <input type="text" name="marks" value="">
-	 	<div> Description
-				<BR>
-				<textarea name="description" form="AddObj" cols='50' style=" font-size:16px;"></textarea>
-		</div>
-		<br>
-		<div>
-			Image Upload
-			<BR>
-			<input type="file" name="pic" accept="image/*" form="AddObj" required>
-		</div>
 
-		<div> Further Articles (please separate by commas)
-				<BR>
-				<textarea name="articles" form="AddObj" cols='50' style="font-size:16px;"></textarea>
-		</div>
+ 	Title: <input type="text" name = "title" value ="" required>
+	 <BR>
+	 Medium: <input type="text" name = "medium" value ="">
+	 <BR>
+ 	Photographer: <input type="text" name = "photographer" value ="">
+	<BR>
+	Format: <input type="text" name = "format" value ="">
+	<BR>
+	Date: <input type="text" name = "date" value ="">
+	<BR>
+	 *Identifier:  <input type="text" name = "identifier" value ="" required>
+	 <BR>
+	 *Original Identifier:  <input type="text" name = "originalIdentifier" value ="" required>
+	 <BR>
+ 	Department: <input type="text" name = "department" value ="">
+	<BR>
+	Collection: <input type="text" name = "collectiontype" value ="">
+	<BR>
+	Repository: <input type="text" name = "repository" value ="">
+ 	<BR>
 
-		<div> Article Links (please separate by commas)
-				<BR>
-				<textarea name="artLinks" form="AddObj" cols='50' style="font-size:16px;"></textarea>
-		</div>
+ 	OTHER FIELDS
+ 	<BR>
+ 	On Display: <input type="text" name="onDisplay" value="">
+ 	<BR>
+	Summary: <input type="text" name="summary" value="">
+	<BR>
+	Citation: <input type="text" name="citation" value="">
+	<BR>
+	Caption: <input type="text" name="caption" value="">
+	<BR>
 
-		<div> Further Videos (please separate by commas)
-				<BR>
-				<textarea name="links" form="AddObj" cols='50' style="font-size:16px;"></textarea>
+	Publisher: <input type="text" name = "publisher" value ="">
+	 <BR>
+ 	Coverage: <input type="text" name = "coverage" value ="">
+	 <BR>
+	 Subject: <input type="text" name = "subject" value ="">
+	 <BR>
+	 
+	<div>
+		Image Upload
+		<BR>
+		<input type="file" name="pic" accept="image/*" form="AddObj" required>
 		</div>
-		<br>
 		<input type="submit" value="Submit" form="AddObj">
 	</form>
 
-</3>
+</h3>
 	<p>
-		<a href="/">Go Back to Research Center's Home Page </a href>
+		<a href="/">Go back to the Digital Research Archive Page </a href>
 	</p>
+</div>

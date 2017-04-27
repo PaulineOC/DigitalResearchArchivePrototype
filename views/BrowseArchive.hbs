@@ -1,86 +1,57 @@
 
 <div class="container-fluid">
-	<h4>
-		BROSE ARCHIVE
-	</h4>
+      <div class="row">
+            <div class="col-md-12 col-md-offset-3">
+                  <div class="row">
+                        <div class="col-md-3" style="padding-top:10px">
+                             <a href="#"><button class="btn  btn-info btn-block" style="background-color:#134ea2; color:#ffffff;">Research Department</button></a>
+                        </div>
+                        <div class="col-md-3" style="padding-top:10px">
+                              <a href="#"><button class="btn  btn-info btn-block" style="background-color:#134ea2; color:#ffffff;">Subject</button></a>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-md-3"style="padding-top:10px">
+                              <a href="#"><button class="btn  btn-info btn-block" style="background-color:#134ea2; color:#ffffff;">Medium</button></a>                
+                        </div>
+                        <div class="col-md-3"style="padding-top:10px">
+                             <a href="#"><button class="btn  btn-info btn-block" style="background-color:#134ea2; color:#ffffff;">Collection</button></a>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-md-3"style="padding-top:10px">
+                              <a href="#"><button class="btn  btn-info btn-block" style="background-color:#134ea2; color:#ffffff;">Date</button></a>
+                        </div>
+                        <div class="col-md-3"style="padding-top:10px">
+                             <a href="#"><button class="btn  btn-info btn-block" style="background-color:#134ea2; color:#ffffff;">Exhibit</button></a>
+                        </div>
+                  </div>
+                  <div class="row">
+                        <div class="col-md-3"style="padding-top:10px">
+                             <a href="#"><button class="btn  btn-info btn-block" style="background-color:#134ea2; color:#ffffff;">Coverage</button></a>
+                        </div>
+                  </div>
+                  
+            </div>
+      </div>
+      <div class="row">
+            <div class="col-md-12">
+                  <div class="row">
+                        <div class="col-md-12  ">
+                        <h1>Sed ut perspiciatis unde omnis iste natus error sit voluptatem</h1>
+                        </div>
+                        <div class="col-md-9">
+                        <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at laoreet velit, ac tincidunt diam. Integer id tristique elit, et porttitor lorem. Duis ac viverra enim. Vivamus tincidunt consequat diam, ac laoreet nunc. Sed venenatis congue orci vitae tempor. Integer lobortis facilisis orci sed pretium. Suspendisse condimentum a lectus quis varius. <BR>  Nulla cursus mollis enim, sed interdum lacus blandit fermentum. Morbi tincidunt sem ligula, ut iaculis ante rhoncus sit amet. Praesent luctus mi vel nunc cursus, nec fringilla nibh dignissim. Vestibulum interdum est quam, eu pretium arcu aliquam sit amet. Sed condimentum nulla sed lobortis eleifend. Nulla suscipit auctor congue. Etiam pretium lobortis ipsum in tincidunt. Cras maximus nibh quis metus feugiat tempor.
+                        </p>
+                  
+            </div>
+           
+      </div>
+
 	
-	{{!-- <div class="col-md-2"> --}}
-	{{!-- <h5>Search:<input required class="form-control" type="text" id="search" name="search">	
-		<input id="searchBtn" type="submit" class="btn"> --}}
-			<form method = "GET" action="/search" id = "formdiv">
-	 		Show me: <input type="text" name = "search" value ="">
-	 		<BR>
-	 		<input type="submit" value="Search!" style="font-size:15px; color:#F4F1DE; background-color: #81B29A;"><BR><BR>
-			</form>
-
-            <form id="formmap" action="/mapSearch" method="POST">
-		          <img class="img-responsive" src="/images/luce.jpg" usemap="#floorplan_Map">
-              <input type='hidden' name="caseNum" id="caseNum" value>
-            
-      <map name="floorplan_Map">
-            <area shape="poly" alt ="#1" coords="264,99,275,110,258,127,247,116" onClick="formsubmit(1)" >
-            <area shape="rect" coords="246,87,262,99" onClick="formsubmit(2);" >
-            <area shape="poly" coords="223,99,250,126,230,146,203,119" onClick="formsubmit(3);">
-            <area shape="rect" coords="186,161,224,173" onClick="formsubmit(4);">
-            <area shape="rect" coords="166,134,182,173" onClick="formsubmit(5);">
-            <area shape="rect" coords="144,134,164,173" onClick="formsubmit(6);">
-            <area shape="poly" coords="153,101,167,115,140,142,126,128" onClick="formsubmit(7);">
-            <area shape="rect" coords="61,101,100,120" onClick="formsubmit(8);">
-            <area shape="rect" coords="23,101,60,120" onClick="formsubmit(9);">
-            <area shape="rect" coords="23,136,43,174" onClick="formsubmit(10);">
-            <area shape="rect" coords="44,155,82,174" onClick="formsubmit(11);">
-            <area shape="rect" coords="83,155,129,174" onClick="formsubmit(12);">
-            <area shape="rect" coords="96,70,118,85" onClick="formsubmit(13);">
-            <area shape="poly" coords="139,59,151,71,135,87,123,75" onClick="formsubmit(14);">
-            <area shape="rect" coords="19,3,91,51" onClick="formsubmit(15);">
-            <area shape="rect" coords="154,3,220,51"  onClick="formsubmit(16);">
-            <area shape="rect" coords="226,15,236,55" onClick="formsubmit(17);">
-            <area shape="rect" coords="226,3,266,13" onClick="formsubmit(18);">
-            <area shape="rect" coords="274,3,314,13" onClick="formsubmit(19);">
-            <area shape="rect" coords="304,15,314,55" onClick="formsubmit(20);">
-            <area shape="poly" coords="266,27,279,40,258,55,245,44" onClick="formsubmit(21);">
-            <area shape="rect" coords="272,44,298,61" onClick="formsubmit(22);">
-            <area shape="rect" coords="318,3,386,53" onClick="formsubmit(23);" >
-            <area shape="rect" coords="451,3,517,53" onClick="formsubmit(24);">
-            <area shape="rect" coords="452,66,477,86" onClick="formsubmit(25);">
-            <area shape="poly" coords="365,70,383,87,368,102,350,84" onClick="formsubmit(26);">
-            <area shape="rect" coords="311,66,333,86" onClick="formsubmit(27);">
-            <area shape="poly" coords="333,100,344,111,326,129,315,118" onClick="formsubmit(28);">
-            <area shape="poly" coords="290,128,308,146,297,157,279,139"onClick="formsubmit(29);" >
-            <area shape="poly" coords="290,148,308,166,297,177,279,159" onClick="formsubmit(30);">
-            <area shape="rect" coords="325,136,345,173" onClick="formsubmit(30);">
-            <area shape="rect" coords="331,123,374,134" onClick="formsubmit(31);">
-            <area shape="rect" coords="348,136,377,173" onClick="formsubmit(32);">
-            <area shape="rect" coords="392,101,439,121" onClick="formsubmit(33);">
-            <area shape="rect" coords="442,104,456,129" onClick="formsubmit(34);">
-            <area shape="rect" coords="398,123,439,135" onClick="formsubmit(35);">
-            <area shape="rect" coords="391,153,429,173" onClick="formsubmit(36);">
-            <area shape="rect" coords="430,153,477,173" onClick="formsubmit(37);">
-            <area shape="rect" coords="477,100,519,111" onClick="formsubmit(38);">
-            <area shape="rect" coords="477,124,508,163" onClick="formsubmit(39);">
-            <area shape="rect" coords="477,112,493,123" onClick="formsubmit(40);">
-            <area shape="rect" coords="494,112,519,123" onClick="formsubmit(41);">
-            <area shape="rect" coords="509,124,519,133" onClick="formsubmit(42);">
-            <area shape="rect" coords="509,138,519,148" onClick="formsubmit(43);">
-            <area shape="rect" coords="509,153,519,163" onClick="formsubmit(44);">
-            <area shape="rect" coords="494,164,519,173" onClick="formsubmit(45);">
-            <area shape="rect" coords="477,164,493,173" onClick="formsubmit(46);">
-      </map>
-      </form>
-    <script>
-      $(document).ready(function(e) {
-        $('img[usemap]').rwdImageMaps();
-      });
-
-      function formsubmit(val){
-            document.getElementById('caseNum').setAttribute("value", val);
-            console.log(document.getElementById('caseNum').value);
-            //window.alert("Data will be displayed for  #"+ val +".");
-            document.getElementById('formmap').submit();
-      }
 
 
-    </script>
 
 </div>
 
