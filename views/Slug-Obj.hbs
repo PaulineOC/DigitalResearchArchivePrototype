@@ -1,143 +1,192 @@
 <div class="container-fluid">
-	<div class="row">
-		<div class="col-lg-6">
-			{{!-- Image --}}
-			<img class="img-responsive" src="data:image/jpeg;base64,{{{object.pic}}}" style=" margin-left:auto;margin-right:auto">
-		</div>
-		<div class="col-lg-6">
-			<table class= "table .table-responsive table-bordered">
-				<tbody>
-					<tr>
-						<th scope="row">Title</th>
-						<td>{{{object.title}}}</td>
-					</tr>
-					<tr>
-						<th scope="row">Medium</th>
-						<td>{{{object.medium}}}</td>
-					</tr>
-					<tr>
-						<th scope="row">Photographer</th>
-						<td>{{{object.photographer}}}</td>
-					</tr>
-					<tr>
-						<th scope="row">Format</th>
-						<td>{{{object.format}}}</td>
-					</tr>
-					<tr>
-						<th scope="row">Date</th>
-						<td>{{{object.date}}}</td>
-					</tr>
+		<div class="row">
+			<div class="col-lg-6">
+				{{!-- Image --}}
+				<img class="img-responsive" src="data:image/jpeg;base64,{{{object.pic}}}" style=" margin-left:auto;margin-right:auto">
+			</div>
+			<div class="col-lg-6" style="padding-top:5px;">
+				<table class= "table .table-responsive table-bordered">
+					<tbody>
+						<tr>
+							<th scope="row">Title</th>
+							<td>{{{object.title}}}</td>
+						</tr>
+						<tr>
+							<th scope="row">Medium</th>
+							<td>{{{object.medium}}}</td>
+						</tr>
+						<tr>
+							<th scope="row">Photographer</th>
+							<td>{{{object.photographer}}}</td>
+						</tr>
+						<tr>
+							<th scope="row">Format</th>
+							<td>{{{object.format}}}</td>
+						</tr>
+						<tr>
+							<th scope="row">Date</th>
+							<td>{{{object.date}}}</td>
+						</tr>
 
-					<tr>
-						<th scope="row">Identifier</th>
-						<td>{{{object.identifier}}}</td>
-					</tr>
+						<tr>
+							<th scope="row">Identifier</th>
+							<td>{{{object.identifier}}}</td>
+						</tr>
 
-					<tr>
-						<th scope="row">Original Identifier</th>
-						<td>{{{object.originalIdentifier}}}</td>
-					</tr>
+						<tr>
+							<th scope="row">Original Identifier</th>
+							<td>{{{object.originalIdentifier}}}</td>
+						</tr>
 
-					<tr>
-						<th scope="row">Department</th>
-						<td>{{{object.department}}}</td>
-					</tr>
+						<tr>
+							<th scope="row">Department</th>
+							<td>{{{object.department}}}</td>
+						</tr>
 
-					<tr>
-						<th scope="row">Collection</th>
-						<td>{{{object.collectionType}}}</td>
-					</tr>
+						<tr>
+							<th scope="row">Collection</th>
+							<td>{{{object.collectionType}}}</td>
+						</tr>
 
-					<tr>
-						<th scope="row">Repository</th>
-						<td>{{{object.repository}}}</td>
-					</tr>
+						<tr>
+							<th scope="row">Repository</th>
+							<td>{{{object.repository}}}</td>
+						</tr>
 
-				</tbody>
-			</table>
+					</tbody>
+				</table>
 
-			<table class="table .table-responsive table-bordered">
-			{{#if object.onDisplay}}
-			hihi
-			{{/if}}
-
-
-
-			</table>
-
-
-			{{!-- identifier: {type: String, default: ''},
-  title: {type: String, default: ''},
-  format: {type: String, default: ''},
-  publisher: {type: String, default: ''},
-  photographer: {type: String, default: ''},
-  repository: {type: String, default: ''},
-  //specific to AMNH
-  department: {type: String, default: ''},
-  medium: {type: String, default: ''},
-  date: {type: String, default: ''},
-  coverage: [String],
-  subject: {type: String, default: ''},
-  collectiontype: {type: String, default: ''},
-  pic: {type: String, default: ''}, --}}
-
-
-
-
-
-
-			
-
+				{{#if object.onDisplay}}
+							<table class="table .table-responsive table-bordered">
+								<tr>
+									<td>
+										<center><h4>Not On Display</h4></center>
+									</td>
+								</tr>
+							</table>
+				{{/if}}
+			</div>
 		</div>
 
-
-	<div class="row">
-		
-
-		{{!-- Information --}}
-		<div class="col-lg-4">
-			
-			
-
+		<div class="row">
+			<div class="col-lg-12" style="padding-top:10px; border-0">
+				<!-- Nav tabs -->
+				<ul class="nav nav-tabs " role="tablist" >
+				  <li class="nav-item">
+				    <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Summary</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Display Caption</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Citation</a>
+				  </li>
+				</ul>
+					<!-- Tab panes -->
+				<div class="tab-content col-lg-12 ">
+				  <div class="tab-pane .active" id="home" role="tabpanel">
+					<p style="padding-right:10px; padding-left:10px; padding-top: 10px">{{{object.summary}}}</p>
+				  </div>
+				  <div class="tab-pane" id="profile" role="tabpanel">
+				  	<p style="padding-right:10px; padding-left:10px; padding-top: 10px">{{{object.caption}}}</p>
+				  </div>
+				  <div class="tab-pane" id="messages" role="tabpanel">
+				  	<p style="padding-right:10px; padding-left:10px; padding-top: 10px">{{{object.citation}}}</p>
+				  </div>
+				</div>
+			</div>	
 		</div>
-		{{!-- Further Information --}}
-		<div class="col-lg-4">
-			<h3>Further Information</h3>
 
-			{{!-- {{#each object.furtherArtLinks}}
-				<a href='{{this}}'>hi{{this}}</a><BR>
-			{{/each }} --}}
+		<div class="row">
+			<div class="col-lg-12">
+				<h2 style="text-align:center">Explore Subjects </h2>
+				<div class="list-group">
+					<form method="POST" action="../../keyTerm" id="keyTerm">
+						{{#each object.subject}}
+							<input class="btn btn-primary" name="keyWord" type="submit" value="{{{this}}}" style="float:left; margin: 10px">
+						{{/each}}
+					</form>					 
+				</div>
+			</div>
+		</div>
 
-			{{#if object.furtherArticles}}
-			<h4>Articles</h4>
-				{{#each object.furtherArticles}}
-					<div>{{this.article}}<a href='{{this.link}}'>{{this.link}}</a>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="row">
+					<div class="col-lg-12">
+						<h2 style="text-align:center">Discover Related Objects</h2>
+						<BR>
 					</div>
-				{{/each }}
-			{{/if}}
+				</div>
 
-				{{#if object.furtherLinks}}
-				<h4>Related Videos</h4><BR>
-				{{#each object.furtherLinks}}
-					<div class="embed-responsive embed-responsive-16by9">
-				  		<iframe class="embed-responsive-item" src="{{this}}" frameborder="0" allowfullscreen></iframe>
-					</div><BR>
+				<div class="row">
+					<div class="col-lg-6" >
+							{{!-- <div style="width:50%"> --}}
 
-				{{/each }}
-			{{/if}}
 
-			<BR>
+							<center>
+								<div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:50%; margin:auto" >
+						  		
+							  		<!-- Indicators -->
+									<ol class="carousel-indicators">
+										{{#each related}}
+											 <li data-target="#myCarousel" data-slide-to="{{@index}}" class="test"></li>
+										{{/each}}
+									</ol>
+							  		<!-- Wrapper for slides -->
+									<div class="carousel-inner">
+										{{#each related}}
+											{{!-- {{{this.title}}} --}}
+											<div class="item">
+												<a href="{{{this.slug}}}">
+													<img class="img-responsive center-block" src="data:image/jpeg;base64,{{{this.pic}}}">
+												</a>
+										</div>
+										{{/each}}
+								    </div>
+								 </div>
+								
+							 <!-- Left and right controls -->
+							 <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+							 	<span class="glyphicon glyphicon-chevron-left"></span>
+							    <span class="sr-only">Previous</span>
+							 </a>
+							 <a class="right carousel-control" href="#myCarousel" data-slide="next" >
+							    <span class="glyphicon glyphicon-chevron-right"></span>
+							    <span class="sr-only">Next</span>
+							 </a>
+
+							</center>
+{{!-- 						</div>
+ --}}
+
+					</div>
+						
+					</div>
+
+				</div>
+			</div>
+			
 		</div>
-	</div>
-
-	<div class="row">
-		
-
-	</div>
-
-
-	</div>
-
-	
-
 </div>
+
+
+<script>
+
+	var items = document.getElementsByClassName("item");
+	var firstEle=items[0];
+	firstEle.classList.add("active");
+
+	var list=document.getElementsByClassName("test");
+	var firstLi = list[0];
+		console.log(firstLi);
+
+	firstLi.classList.add("active");
+
+
+
+
+</script>
+
+
+

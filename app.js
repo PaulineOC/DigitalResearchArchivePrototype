@@ -30,11 +30,41 @@ app.get('/', function(req, res) {
 		});
 });
 
+
+
+function generalSearch(obj, word){
+	word=word.trim().toLowerCase();
+	console.log(word);
+	console.log(obj.title);
+
+	if(obj.title.includes(word)){
+		console.log('title match');
+		return true;
+	}
+	else if(subjectSearch(obj,word)){
+		console.log("subject matc");
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
 app.post('/searchbar',function(req,res){
-	console.log(req.body.searchterm);
-	console.log(req.query.search);
-	museumObj.find({ $or: [{ "accessionNum": req.query.search},{ "title": req.query.search}, { "manufacturer": req.query.search}, {"medium": req.query.search},{"maker": req.query.search}]}, function(err, obj, count) {
-		res.render('Search', {'searchTerm': obj});
+	var fuzzy = new RegExp(".*"+req.body.searchterm.toLowerCase().trim()+".*");
+	 var results=[];
+	// museumObj.find({}).then(function(rs){
+	// 	rs.forEach(function(ele){
+	// 		console.log(ele.title);
+	// 		if(generalSearch(ele, word)){
+	// 			results.push(ele);
+	// 		}
+	// 	});
+	// 	res.render('Search', {'generalterm':word, 'searchTerm': results});
+	// });
+
+	museumObj.find({ $or: [{ "title": fuzzy},{"subject": { $in: [req.body.searchterm.toLowerCase()]}},{"photographer": fuzzy}, {"identifier": fuzzy}, {"department": fuzzy}, {"collection": fuzzy}, {"repository": fuzzy}, {"coverage": fuzzy}]}, function(err, obj, count) {
+		res.render('Search', {'searchTerm': obj, "generalterm":req.body.searchterm});
 	});
 
 });
@@ -44,14 +74,21 @@ app.get('/BrowseArchive',function(req,res){
 });
 
 app.get('/About', function(req,res){
-	res.render('About');
+	res.redirect('https://projects.invisionapp.com/share/R6BG6CVMJ#/screens/230769836');
 
 });
 
 app.get('/Features', function(req,res){
-	res.render('About');
+	res.redirect("https://projects.invisionapp.com/share/R6BG6CVMJ#/screens/230900189");
 
 });
+
+
+app.get('/Subject', function(req,res){
+	res.render('subject');
+});
+
+
 
 app.get('/AddObj',  function(req, res) {
 	res.render('AddObj');
@@ -66,16 +103,16 @@ app.post('/AddObj',upload.single('pic'),function(req,res) {
 	}
 
 	var newObj = new museumObj({
-		'title': req.body.title,
-		'medium': req.body.medium,
-		'photographer': req.body.photographer,
-		'format': req.body.format,
-		'date': req.body.date,
-		'identifier': req.body.identifier,
-		'originalIdentifier': req.body.originalIdentifier,
-		'department': req.body.department, 
-		'collection': req.body.collectiontype,
-		'repository': req.body.repository,
+		'title': req.body.title.toLowerCase(),
+		'medium': req.body.medium.toLowerCase(),
+		'photographer': req.body.photographer.toLowerCase(),
+		'format': req.body.format.toLowerCase(),
+		'date': req.body.date.toLowerCase(),
+		'identifier': req.body.identifier.toLowerCase(),
+		'originalIdentifier': req.body.originalIdentifier.toLowerCase(),
+		'department': req.body.department.toLowerCase(), 
+		'collection': req.body.collectiontype.toLowerCase(),
+		'repository': req.body.repository.toLowerCase(),
 		'onDisplay': bool,
 		'summary': req.body.summary,
 		'citation': req.body.citation, 
@@ -85,10 +122,11 @@ app.post('/AddObj',upload.single('pic'),function(req,res) {
 	});
 	//Further Material:
 	if(req.body.subject){
-		var splitSubject = req.body.subject.split(',');
+		var splitSubject = req.body.subject.split(',,');
 		for(var i=0;i<splitSubject.length;i++){
 			splitSubject[i] = splitSubject[i].replace(/(\r\n|\n|\r)/gm,"");
 			splitSubject[i].trim();
+			splitSubject[i].toLowerCase();
 			newObj.subject.push(splitSubject[i]);
 		}
 	}
@@ -103,27 +141,60 @@ app.post('/AddObj',upload.single('pic'),function(req,res) {
 });
 
 
-app.post('/mapSearch',function(req,res){
-	console.log(req.body);
-	if(req.body.caseNum){
-		museumObj.find({  "location": req.body.caseNum}, function(err, obj, count){
-			if(err){
-				console.log(err);
-			}
-			else{
-			res.render('Search', {'searchTerm': obj});
-			}
-		});
+var checkSubject = function(searchObj, refObj) {
+	for (var i = 0; i < searchObj.subject.length; i++) {
+		if (refObj.subject.includes(searchObj.subject[i])) {
+			return true;
+		}
 	}
-});
+	return false;
+}
 
+
+var allObj=[];
 
 app.get('/object/:slug',function(req,res){
-	museumObj.findOne({slug: req.params.slug},function(err, obj,count){
-		res.render('Slug-Obj', {'object':obj});
+	var results = [];
+	museumObj.findOne({slug: req.params.slug}).then(function(obj1) {
+		museumObj.find({}).then(function(rs){
+			rs.forEach(function(ele){
+				allObj.push(ele);
+				if(ele.title != obj1.title && checkSubject(ele, obj1)){
+					results.push(ele);
+				}
+			});//all elements
+			res.render('Slug-Obj', {'object':obj1, 'related': results});
+		});
 	});
 });
 
+
+
+var subjectSearch = function(searchObj, term) {
+	for (var i = 0; i < searchObj.subject.length; i++) {
+		var test  = searchObj.subject[i].trim();
+		test = test.toLowerCase();
+		if(test === term){
+			return true;
+		}
+	}
+	return false;
+}
+
+
+app.post('/keyTerm',function(req,res){
+	var results=[];
+	var word =req.body.keyWord.toLowerCase().trim();
+
+	museumObj.find({}).then(function(rs){
+		rs.forEach(function(ele){
+			if(subjectSearch(ele, word)){
+				results.push(ele);
+			}
+		});
+		res.render('Search', {'generalterm':word, 'searchTerm': results});
+	});
+});
 
 
 app.listen(app.get('port'), function() {

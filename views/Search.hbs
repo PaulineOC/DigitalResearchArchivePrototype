@@ -1,22 +1,160 @@
-
-<h1>Brooklyn Museum's Luce Research Center<h1>
-<h4>
-
-
-<BR>hi "hi"<BR>
-
-{{#each searchTerm}}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-12">
 
 
-hello -- here is slug =  {{{this.slug}}}
-	<a href="/object/{{{this.slug}}}">{{{this.title}}}</a>
-	
-{{/each}}
+			<div class="row">
+				<div class="col-lg-12">
+					<h3>Term: {{{generalterm}}}</h3>
+				</div>
+			</div>
+			{{!-- Table of results --}}
+			<div class="row">
+				<div class="col-lg-12">
 
+					<table class=" table table-bordered table-responsive">
+						<tbody id="table">
+							{{#each searchTerm}}
 
-{{!-- </div>
- --}}
-{{!-- 
+								<div class="hidden">
+									<div>
+										{{{this.slug}}}
+									</div>
+									<div>
+										{{{this.title}}}
+									</div>
+									<div>
+										{{{this.maker}}}
+									</div>
+									<img class="img-responsive" style="height:150px; width:150px; margin-left: auto; margin-right:auto"src="data:image/jpeg;base64,{{{this.pic}}}">
+								</div>
+							{{/each}}
+					</tbody>
+				</table>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
 <script>
-	document.getElementsByClassName('OverallTitle')[0].classList.add('hidden');
-</script> --}}
+
+	document.addEventListener('DOMContentLoaded', init);
+	function init(){
+
+		var hidden= document.getElementsByClassName('hidden');
+		var searchNum = hidden.length;
+		var table= document.getElementById('table');
+		var arrayObj = [];
+		for(var k=0;k<searchNum;k++){
+			arrayObj.push(hidden[k]);
+		}
+		var rowNum = searchNum / 4;
+		var lastRemainder=0;
+		var lastRow =false;
+		if(searchNum % 4 !== 0){
+			lastRemainder = searchNum% 4;
+		}
+		rowNum= Math.floor(rowNum)+1;
+
+		for(var i=0;i<rowNum;i++){
+			var row = document.createElement("tr");
+			row.setAttribute("class", "tr");
+
+			if(lastRemainder!=0 && i==rowNum-1){
+				for(var m=0;m<lastRemainder;m++){
+
+					var bigdiv = document.createElement("td");
+					bigdiv.classList.add("td");
+					//bigdiv.classList.add("col-lg-3");
+
+					var currItem = arrayObj.shift();
+					var img=currItem.lastChild.previousSibling;
+
+
+					//title
+					var slug =currItem.firstChild.nextSibling;
+					var slugText = slug.innerHTML;
+					//console.log(slugText);
+
+					var title = slug.nextSibling.nextSibling;
+					var titleText = slug.nextSibling.nextSibling.innerHTML;
+					//console.log(titleText);
+	
+					var overlay = document.createElement("div");
+					overlay.classList.add("view");
+					overlay.classList.add("overlay");
+					overlay.classList.add("hm-red-light");
+					overlay.appendChild(img);
+
+					var mask = document.createElement("div");
+					mask.classList.add("mask");
+					mask.classList.add("flex-center");
+					var p = document.createElement("p");
+					p.innerHTML = "Hello!!";
+					p.classList.add("white-text");
+					var link = document.createElement("a");
+					var att= document.createAttribute("href");
+					att.value = "/object/" + slugText;
+					link.setAttributeNode(att);
+
+
+					link.innerHTML = titleText;
+					
+					mask.appendChild(link);
+					overlay.appendChild(mask);
+					bigdiv.append(overlay);
+					row.appendChild(bigdiv);
+				}
+
+				table.append(row);
+			}
+			else{
+				for(var j=0;j<4;j++){
+					var bigdiv = document.createElement("td");
+					bigdiv.classList.add("td");
+
+					var currItem = arrayObj.shift();
+					var img=currItem.lastChild.previousSibling;
+					//title
+					var slug =currItem.firstChild.nextSibling;
+					var slugText = slug.innerHTML;
+					//console.log(slugText);
+
+					var title = slug.nextSibling.nextSibling;
+					var titleText = slug.nextSibling.nextSibling.innerHTML;
+					//console.log(titleText);
+	
+					var overlay = document.createElement("div");
+					overlay.classList.add("view");
+					overlay.classList.add("overlay");
+					overlay.classList.add("hm-white-light");
+					overlay.appendChild(img);
+
+					var mask = document.createElement("div");
+					mask.classList.add("mask");
+					mask.classList.add("flex-center");
+					var link = document.createElement("a");
+					var att= document.createAttribute("href");
+					
+					//link.setAttribute( "style", "");
+					att.value = "/object/"+slugText;
+					link.setAttributeNode(att);
+					link.innerHTML = titleText;
+
+					mask.appendChild(link);
+					overlay.appendChild(img);
+					bigdiv.append(overlay);
+					row.appendChild(bigdiv);
+				}
+
+				table.appendChild(row);
+
+			}
+		
+		}
+	}
+
+</script>
